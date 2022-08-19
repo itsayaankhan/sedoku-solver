@@ -235,5 +235,41 @@ function cellsValid(board){
     return true
 }
 
-console.log(solve(bd4));
+// * Tests * //
 
+// console.log(solve(bd1));
+// console.log(solve(bd2));
+// console.log(solve(bd3));
+// console.log(solve(bd4));
+
+
+function updateBoard(board) {
+    // Board -> null
+    // update the DOM with the answer
+    if (board == false){
+        for (i = 1; i <= 9; i++){
+            document.getElementById("row " + String(i)).innerHTML = "NO SOLUTION EXISTS TO THE GIVEN BOARD"
+        }
+    }
+    else{
+        for (var i = 1; i <= 9; i++){
+            var row = ""
+            for (var j = 0; j < 9; j++){
+                if (row == ""){
+                    row = row + String(board[i - 1][j])
+                }
+                else {
+                    row = row + "\xa0\xa0\xa0\xa0\xa0\xa0\xa0" + String(board[i - 1][j])
+                }
+            }
+            document.getElementById("row " + String(i)).innerHTML = row
+        }
+    }
+}
+
+function inputIsInvalid(){
+    // starting board is invalid or puzzle is insolvable
+    for (i = 1; i <= 9; i++){
+        document.getElementById("row " + String(i)).innerHTML = "THE GIVEN BOARD IS INVALID"
+    }
+}
